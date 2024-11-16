@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:karbugit/page/home.dart';
+import 'package:karbugit/page/beranda.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

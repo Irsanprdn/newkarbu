@@ -10,6 +10,7 @@ class AudioHelper {
       await _audioPlayer.setSource(isLocal ? AssetSource(audioPath) : UrlSource(audioPath));
       await _audioPlayer.resume();
       isPlaying = true;
+      print('play $isPlaying');
     } catch (e) {
       print("Error saat memutar audio: $e");
     }
@@ -20,6 +21,7 @@ class AudioHelper {
     try {
       await _audioPlayer.pause();
       isPlaying = false;
+      print('pause $isPlaying');
     } catch (e) {
       print("Error saat menjeda audio: $e");
     }
