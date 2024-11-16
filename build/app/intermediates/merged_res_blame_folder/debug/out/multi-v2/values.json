@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.karbugit.app-mergeDebugResources-24:/values/values.xml",
+            "outputFile": "com.example.karbugit.app-mergeDebugResources-26:/values/values.xml",
             "map": [
                 {
                     "source": "C:\\Users\\irsan.perdana\\.gradle\\caches\\transforms-3\\a49cd171355a6a39687e69f028c8bcbc\\transformed\\fragment-1.7.1\\res\\values\\values.xml",

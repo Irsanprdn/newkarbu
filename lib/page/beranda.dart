@@ -100,7 +100,7 @@ class _GameHomePageState extends State<GameHomePage> {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    AudioHelper.playAudio(_audioPath, isLocal: true);
+                    AudioHelper.playEffect(_audioPath, isLocal: true);
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -127,7 +127,7 @@ class _GameHomePageState extends State<GameHomePage> {
                 SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
-                    AudioHelper.playAudio(_audioPath, isLocal: true);
+                    AudioHelper.playEffect(_audioPath, isLocal: true);
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Color(0xFFA4E300),
@@ -159,7 +159,7 @@ class _GameHomePageState extends State<GameHomePage> {
                   children: [
                     ElevatedButton(
                       onPressed: () {
-                        AudioHelper.playAudio(_audioPath, isLocal: true);
+                        AudioHelper.playEffect(_audioPath, isLocal: true);
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -195,15 +195,17 @@ class _GameHomePageState extends State<GameHomePage> {
                   children: [
                     ElevatedButton(
                       onPressed: () {
-                        AudioHelper.playAudio(_audioPath, isLocal: true);
+                        // Memutar efek suara tombol
+                        AudioHelper.playEffect(_audioPath, isLocal: true);
+
                         setState(() {
-                          isMusic = !isMusic; // Toggle the music state
-                          // print(isMusic);
-                          // Play or stop the music based on the state
+                          isMusic = !isMusic; // Toggle status musik latar
                           if (isMusic) {
-                            AudioHelper.playAudio('sound/backsound.mp3'); // Replace with your actual audio path
+                            // Memutar musik latar jika belum diputar
+                            AudioHelper.playBackgroundMusic('sound/backsound.mp3');
                           } else {
-                            AudioHelper.pauseAudio(); // This will pause the music
+                            // Menghentikan musik latar jika toggle off
+                            AudioHelper.pauseBackgroundMusic();
                           }
                         });
                       },
@@ -240,7 +242,7 @@ class _GameHomePageState extends State<GameHomePage> {
                   children: [
                     ElevatedButton(
                       onPressed: () {
-                        AudioHelper.playAudio(_audioPath, isLocal: true);
+                        AudioHelper.playEffect(_audioPath, isLocal: true);
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -274,7 +276,7 @@ class _GameHomePageState extends State<GameHomePage> {
                   children: [
                     ElevatedButton(
                       onPressed: () {
-                        AudioHelper.playAudio(_audioPath, isLocal: true);
+                        AudioHelper.playEffect(_audioPath, isLocal: true);
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -308,7 +310,8 @@ class _GameHomePageState extends State<GameHomePage> {
                   children: [
                     ElevatedButton(
                       onPressed: () {
-                        AudioHelper.playAudio(_audioPath, isLocal: true);
+                        AudioHelper.playEffect(_audioPath, isLocal: true);
+                        _confirmExit(context);
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Color(0xFFA4E300),
@@ -336,6 +339,36 @@ class _GameHomePageState extends State<GameHomePage> {
           ),
         ],
       ),
+    );
+
+  }
+
+  void _confirmExit(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Konfirmasi'),
+          content: Text('Apakah Anda yakin ingin keluar dari game?'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                // Jika pengguna memilih "Tidak"
+                Navigator.of(context).pop();
+              },
+              child: Text('Tidak'),
+            ),
+            TextButton(
+              onPressed: () {
+                // Jika pengguna memilih "Ya"
+                Navigator.of(context).pop();
+                Navigator.of(context).pop(); // Kembali ke layar sebelumnya
+              },
+              child: Text('Ya'),
+            ),
+          ],
+        );
+      },
     );
   }
 }
